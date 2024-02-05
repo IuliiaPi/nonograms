@@ -85,6 +85,7 @@ html {
 
 html,
 .page {
+    /* position: relative; */
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -181,6 +182,7 @@ html,
     width: 150px;
     height: 50px;
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 
@@ -189,7 +191,7 @@ html,
 }
 
 .time__timer {
-    /* color: rgb(7, 59, 59); */
+    /* color: rgb(15, 79, 79); */
 }
 
 .game-container {
@@ -204,7 +206,7 @@ html,
 }
 
 .top-clues {
-    margin-left: 100px;
+    margin-left: 150px;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -212,7 +214,8 @@ html,
 }
 
 .top-clues-1,
-.top-clues-2 {
+.top-clues-2,
+.top-clues-3 {
     display: flex;
     align-items: center;
 }
@@ -241,7 +244,8 @@ html,
 }
 
 .left-clues-1,
-.left-clues-2 {
+.left-clues-2,
+.left-clues-3 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -258,13 +262,21 @@ html,
     border-radius: 2px;
 }
 
-.game-contant {
+.game-content {
     width: 252px;
     height: 252px;
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     border: 1px solid black;
+}
+
+.game-content-shadow {
+    width: 252px;
+    height: 252px;
+    position: absolute;
+    background-color: transparent;
 }
 
 /* .game-contant._10 {
@@ -304,10 +316,11 @@ html,
 .popup {
     display: none;
     width: 100%;
+    /* height: 100%; */
     height: 100vh;
     position: absolute;
-    /* bottom: 0;
-    left: 0; */
+    bottom: 0;
+    left: 0;
     background-color: #8c8d90e3;
 }
 
@@ -487,6 +500,43 @@ html,
 
     .block-buttons {
         gap: 20px;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+
+    .title {
+        font-size: 30px;
+    }
+
+    .top-clues {
+        margin-left: 120px;
+    }
+
+    .top-clues__cells {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .left-clues__cells {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .game-content {
+        width: 202px;
+        height: 202px;
+    }
+    
+    .game-content-shadow {
+        width: 202px;
+        height: 202px;
+    }
+    
+    .game-cell {
+        width: 40px;
+        height: 40px;
     }
 
 }

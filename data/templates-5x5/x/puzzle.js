@@ -1,4 +1,4 @@
-const frame5x5Data = [
+const frame5x5DataX = [
    
     {
         id: '1',
@@ -102,4 +102,4 @@ const frame5x5Data = [
     },
 ]
 
-export default frame5x5Data;
+export default frame5x5DataX;
