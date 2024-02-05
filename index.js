@@ -1,21 +1,35 @@
 import templates5x5Data from './data/templates-5x5/templates-5x5.js';
 import frameSizesData from './data/frame-levels.js';
-// import frame5x5Data from './data/templates-5x5/heart/puzzle.js';
+
+import frame5x5Data from './data/templates-5x5/heart/puzzle.js';
 import topClues1Data from './data/templates-5x5/heart/top-clues-1.js';
 import topClues2Data from './data/templates-5x5/heart/top-clues-2.js';
+import topClues3Data from './data/templates-5x5/heart/top-clues-3.js';
 import leftClues2Data from './data/templates-5x5/heart/left-clues-2.js';
 import leftClues1Data from './data/templates-5x5/heart/left-clues-1.js';
+import leftClues3Data from './data/templates-5x5/heart/left-clues-3.js';
 
-// import frame5x5Data from './data/templates-5x5/x/puzzle.js';
 // import frame5x5Data from './data/templates-5x5/snowflake/puzzle.js';
-// import frame5x5Data from './data/templates-5x5/house/puzzle.js';
-import frame5x5Data from './data/templates-5x5/cat/puzzle.js';
+// import topClues1Data from './data/templates-5x5/snowflake/top-clues-1.js';
+// import topClues2Data from './data/templates-5x5/snowflake/top-clues-2.js';
+// import topClues3Data from './data/templates-5x5/snowflake/top-clues-3.js';
+// import leftClues2Data from './data/templates-5x5/snowflake/left-clues-2.js';
+// import leftClues1Data from './data/templates-5x5/snowflake/left-clues-1.js';
+// import leftClues3Data from './data/templates-5x5/snowflake/left-clues-3.js';
 
-// import frame5x5Data from './templates-5x5/x/puzzle.js';
-// import topClues1Data from './templates-5x5/x/top-clues-1.js';
-// import topClues2Data from './templates-5x5/x/top-clues-2.js';
-// import leftClues2Data from './templates-5x5/x/left-clues-2.js';
-// import leftClues1Data from './templates-5x5/x/left-clues-1.js';
+// import frame5x5Data from './data/templates-5x5/house/puzzle.js';
+
+// import frame5x5Data from './data/templates-5x5/cat/puzzle.js';
+// import topClues1Data from './data/templates-5x5/cat/top-clues-1.js';
+// import topClues2Data from './data/templates-5x5/cat/top-clues-2.js';
+// import leftClues2Data from './data/templates-5x5/cat/left-clues-2.js';
+// import leftClues1Data from './data/templates-5x5/cat/left-clues-1.js';
+
+import frame5x5DataX from './data/templates-5x5/x/puzzle.js';
+// import topClues1Data from './data/templates-5x5/x/top-clues-1.js';
+// import topClues2Data from './data/templates-5x5/x/top-clues-2.js';
+// import leftClues2Data from './data/templates-5x5/x/left-clues-2.js';
+// import leftClues1Data from './data/templates-5x5/x/left-clues-1.js';
 
 document.body.setAttribute('class', 'page');
 
@@ -105,12 +119,39 @@ topClues.append(topClues2);
 function displayTopClues2() {
     topClues2Data.forEach((item, index) => {
         const top2Cells = document.createElement('div');
-        top2Cells.className = 'top-clues__cells';
+        top2Cells.className = 'top-clues__cells top-clues-2__cells';
         top2Cells.innerHTML = item.number;
         topClues2.append(top2Cells);
     });
 };
+const top2Cells = document.querySelectorAll('.top-clues-2__cells');
+
+// top2Cells.forEach((cell) => {
+//     if (cell.innerHTML !== '') {
 displayTopClues2();
+//     }
+// });
+
+const topClues3 = document.createElement('div');
+topClues3.className = 'top-clues-3';
+topClues.append(topClues3);
+
+function displayTopClues3() {
+    topClues3Data.forEach((item, index) => {
+        const top3Cells = document.createElement('div');
+        top3Cells.className = 'top-clues__cells top-clues-3__cells';
+        top3Cells.innerHTML = item.number;
+        topClues3.append(top3Cells);
+    });
+};
+
+const top3Cells = document.querySelectorAll('.top-clues-3__cells');
+
+// top3Cells.forEach((cell) => {
+//     if (cell.innerHTML !== '') {
+displayTopClues3();
+//     }
+// });
 
 const block = document.createElement('div');
 block.className = 'block';
@@ -152,9 +193,28 @@ function displayLeftClues2() {
 
 displayLeftClues2();
 
+const leftClues3 = document.createElement('div');
+leftClues3.className = 'left-clues-3';
+leftClues.append(leftClues3);
+
+function displayLeftClues3() {
+    leftClues3Data.forEach((item, index) => {
+        const leftRow3Cells = document.createElement('div');
+        leftRow3Cells.className = 'left-clues__cells';
+        leftRow3Cells.innerHTML = item.number;
+        leftClues3.append(leftRow3Cells);
+    });
+};
+
+displayLeftClues3();
+
 const gameContent = document.createElement('div');
-gameContent.className = 'btn game-contant';
+gameContent.className = 'btn game-content';
 block.append(gameContent);
+
+const gameContentShadow = document.createElement('div');
+gameContentShadow.className = 'btn game-content-shadow';
+gameContent.append(gameContentShadow);
 
 // display Frame 5x5
 
@@ -169,6 +229,16 @@ function displayFrame5x5() {
 };
 
 displayFrame5x5();
+
+function displayFrame5x5X() {
+    frame5x5DataX.forEach((item, index) => {    // or  for(let i = 0; i < frame5x5Data.length; i++) { }
+        const gameCell = document.createElement('button');
+        gameCell.className = 'btn game-cell';
+        gameCell.innerHTML = item.name;
+        gameCell.classList.add('_crossed-cell');
+        gameContent.append(gameCell);
+    });
+};
 
 const cells = gameContent.querySelectorAll('.game-cell');
 
@@ -211,18 +281,6 @@ let volume = 0.1;
 
 // popup Levels
 
-// const popupLevel = document.createElement('div');
-// popupLevel.className = 'popup-level';
-// buttonLevel.append(popupLevel);
-
-// const popupLevelContainer = document.createElement('div');
-// popupLevelContainer.className = 'popup-level__container';
-// popupLevel.append(popupLevelContainer);
-
-// const popupLevelContent = document.createElement('div');
-// popupLevelContent.className = 'popup-level__content';
-// popupLevelContainer.append(popupLevelContent);
-
 const popupLevelList = document.createElement('ul');
 popupLevelList.className = 'popup-level__list';
 buttonLevels.append(popupLevelList);
@@ -253,12 +311,13 @@ const popupContentLevel5x5 = document.createElement('div');
 popupContentLevel5x5.className = 'popup__content-level-5x5';
 popupContainerLevel5x5.append(popupContentLevel5x5);
 
-let subtitleLevel;
-let level;
+let solutionLevel;
+solutionLevel = `5x5`;
 let solutionName;
+solutionName = `heart`;
+let solutionTime;
 
 templates5x5Data.forEach((item, index) => {
-
     const listItem5x5 = document.createElement('div');
     listItem5x5.className = 'popup-level__list-item-5x5';
     popupContentLevel5x5.append(listItem5x5);
@@ -274,17 +333,30 @@ templates5x5Data.forEach((item, index) => {
     listItem5x5Name.className = 'popup-level__list-item-5x5-name';
     listItem5x5Name.innerHTML = item.name;
     listItem5x5.append(listItem5x5Name);
+});
 
-    listItem5x5.addEventListener('click', () => {
+const item5x5 = document.querySelectorAll('.popup-level__list-item-5x5');
+
+item5x5.forEach((item, index) => {
+    item.addEventListener('click', () => {
         popupLevel5x5.classList.remove('_active');
         document.body.classList.remove('_lock');
-        subtitleLevel.innerHTML = '5x5';
-        if (item.name === 'heart') {
-            solutionName = item.name;
-        }
-        if (item.name === 'X') {
-            solutionName = item.name;
-        }
+        solutionLevel = `5x5`;
+        solutionName = item.textContent;
+        solutionTime = time;
+        addTableRow();
+
+        // if (item.textContent === 'heart') {
+        // cells.innerHTML = '';
+        //     checkCells();
+        // }
+        // if (item.textContent === 'X') {
+        // gameContainer.innerHTML = '';
+        // gameContent.innerHTML = '';
+        // cells.innerHTML = '';
+        // displayFrame5x5X();
+        // checkCellsX();
+        // }
     });
 });
 
@@ -327,18 +399,20 @@ popupTableResultsTH3.innerHTML = 'Time';
 popupTableResultsTR.append(popupTableResultsTH3);
 
 function addTableRow() {
-    const elementsRow = popupTableResultsTR.querySelectorAll('tr');
+    // const elementsRow = popupTableResultsTR.querySelectorAll('tr');
     let newRow = document.createElement('tr');
     newRow.classList.add('row-result');
+    popupTableResultsBlock.append(newRow);
+
     // newRow.textContent = elementsRow.length + 1;
     // newRow = [];
-    // if (elementsRow.length < 2) {
-    popupTableResultsBlock.append(newRow);
-    // newRow.unshift();
+    // if (elementsRow.length < 5) {
+    //     newRow.unshift();
+    // }
 
-    subtitleLevel = document.createElement('td');
+    const subtitleLevel = document.createElement('td');
     subtitleLevel.classList.add('table__subtitle');
-    // subtitleLevel.textContent = '5x5';
+    subtitleLevel.textContent = solutionLevel;
     newRow.append(subtitleLevel);
 
     const subtitleSolution = document.createElement('td');
@@ -348,33 +422,17 @@ function addTableRow() {
 
     const subtitleTime = document.createElement('td');
     subtitleTime.classList.add('table__subtitle');
-    subtitleTime.textContent = time;
+    subtitleTime.textContent = solutionTime;
     newRow.append(subtitleTime);
 }
-
 addTableRow();
-
-{/* <table class="table-results">
-<tr>
-    <th class="table__title title-player">Player</th>
-    <th class="table__title title-clicks">Clicks</th>
-</tr>
-<!-- <tr class="row-result">
-    <td class="table__subtitle subtitle-player"></td>
-    <td class="table__subtitle subtitle-clicks"></td>
-</tr> -->
-<!-- <tr class="row-result">
-    <td class="table__subtitle subtitle-player"></td>
-    <td class="table__subtitle subtitle-clicks"></td>
-</tr> -->
-</table> */}
 
 // const PopUpNum = document.createElement('div');
 // PopUpNum.setAttribute('class', 'pop-up__num');
 // PopUpNum.textContent = (``);
 // PopUpScoresBlock.append(PopUpNum);
 
-// for (let i = 1; i < 11; i++) {
+// for (let i = 1; i < 6; i++) {
 //     const PopUpNum1 = document.createElement('p');
 //     PopUpNum1.setAttribute('class', 'pop-up__num');
 //     PopUpNum1.textContent = (`${i}`);
@@ -410,120 +468,121 @@ buttonPlayAgain.setAttribute('type', 'button');
 buttonPlayAgain.innerHTML = 'Play again';
 popupContent.append(buttonPlayAgain);
 
-// function play() 
+// function clickCell 
 
-function play() {
-
-    frame5x5Data.forEach((item, index) => {
-        cells.forEach(cell => {
-            cell.addEventListener('click', (event) => {
-
-                // showTime();
-                // cell.innerHTML !== 'x'
-                if (event.button === 0) {
-                    cell.classList.toggle('_active');
-                    audio = new Audio('./assets/audio/bell.wav');
-                    playSound();
-                    // cell.classList.remove('_wrong');
-                    // cell.innerHTML = 'x';
-                    // cell.innerHTML = item.name;
-                }
-                // if (cell.innerHTML === 'x' && event.button === 2) {
-                //     audio = new Audio('./assets/audio/lose.wav');
-                //     playSound();
-                //     cell.classList.remove('_wrong');
-                // }
-                if (event.button === 2) {
-                    cell.classList.remove('_active');
-                    cell.innerHTML = 'x';
-                    audio = new Audio('./assets/audio/lose.wav');
-                    playSound();
-                    cell.addEventListener('contextmenu', (e) => {
-                        e.preventDefault();
-                        return false;
-                    });
-                    // cell.classList.remove('_wrong');
-                }
-
-                for (let i = 0; i < cells.length; i++) {
-                    checkCells2();
-                }
-            });
-
-            // cellClick
-            function cellClick() {
+function clickCell() {
+    cells.forEach(cell => {
+        cell.addEventListener('click', (event) => {
+            if (event.button === 0) {
                 cell.classList.toggle('_active');
+                cell.innerHTML = '';
+                audio = new Audio('./assets/audio/bell.wav');
+                playSound();
+            }
+        });
+
+        // Prevent the context menu to show:
+
+        // Assign an 'contextmenu' event to cell:
+        cell.addEventListener('contextmenu', showCrossedCell);
+
+        // Prevent default context menu:
+        cell.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
+        // Show cell content:
+        function showCrossedCell() {
+            cell.classList.remove('_active');
+            cell.classList.remove('_crossed-cell');
+            cell.innerHTML = 'x';
+            audio = new Audio('./assets/audio/lose.wav');
+            playSound();
+        }
+    });
+}
+
+clickCell();
+
+gameContentShadow.addEventListener('click', (e) => {
+    startTimer();
+    gameContentShadow.classList.remove('game-content-shadow');
+});
+
+function checkCells() {
+    cells.forEach(cell => {
+        cell.addEventListener('click', (event) => {
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[1].classList.contains('_active') &&
+                    cells[3].classList.contains('_active') &&
+                    cells[5].classList.contains('_active') &&
+                    cells[6].classList.contains('_active') &&
+                    cells[7].classList.contains('_active') &
+                    cells[8].classList.contains('_active') &&
+                    cells[9].classList.contains('_active') &&
+                    cells[10].classList.contains('_active') &&
+                    cells[11].classList.contains('_active') &&
+                    cells[12].classList.contains('_active') &&
+                    cells[13].classList.contains('_active') &&
+                    cells[14].classList.contains('_active') &&
+                    cells[16].classList.contains('_active') &&
+                    cells[17].classList.contains('_active') &&
+                    cells[18].classList.contains('_active') &&
+                    cells[22].classList.contains('_active') &&
+                    !cells[0].classList.contains('_active') &&
+                    !cells[2].classList.contains('_active') &&
+                    !cells[4].classList.contains('_active') &&
+                    !cells[15].classList.contains('_active') &&
+                    !cells[19].classList.contains('_active') &&
+                    !cells[20].classList.contains('_active') &&
+                    !cells[21].classList.contains('_active') &&
+                    !cells[23].classList.contains('_active') &&
+                    !cells[24].classList.contains('_active')) {
+
+                    showGameOver();
+                }
             }
         });
     });
 }
 
-// cells.some(cell => cell.classList.contains('_active')); {
-startTimer();
-//     };
+checkCells();
 
-play();
+function checkCellsX() {
+    cells.forEach(cell => {
+        cell.addEventListener('click', (event) => {
+            for (let i = 0; i < cells.length; i++) {
+                if (!cells[1].classList.contains('_active') &&
+                    !cells[3].classList.contains('_active') &&
+                    !cells[5].classList.contains('_active') &&
+                    cells[6].classList.contains('_active') &&
+                    !cells[7].classList.contains('_active') &
+                    cells[8].classList.contains('_active') &&
+                    !cells[9].classList.contains('_active') &&
+                    !cells[10].classList.contains('_active') &&
+                    !cells[11].classList.contains('_active') &&
+                    cells[12].classList.contains('_active') &&
+                    !cells[13].classList.contains('_active') &&
+                    !cells[14].classList.contains('_active') &&
+                    cells[16].classList.contains('_active') &&
+                    !cells[17].classList.contains('_active') &&
+                    cells[18].classList.contains('_active') &&
+                    !cells[22].classList.contains('_active') &&
+                    cells[0].classList.contains('_active') &&
+                    !cells[2].classList.contains('_active') &&
+                    cells[4].classList.contains('_active') &&
+                    !cells[15].classList.contains('_active') &&
+                    !cells[19].classList.contains('_active') &&
+                    cells[20].classList.contains('_active') &&
+                    !cells[21].classList.contains('_active') &&
+                    !cells[23].classList.contains('_active') &&
+                    cells[24].classList.contains('_active')) {
 
-function checkCells() {
-    if (cells[1].classList.contains('_active') &&
-        cells[3].classList.contains('_active') &&
-        cells[5].classList.contains('_active') &&
-        cells[6].classList.contains('_active') &&
-        cells[7].classList.contains('_active') &
-        cells[8].classList.contains('_active') &&
-        cells[9].classList.contains('_active') &&
-        cells[10].classList.contains('_active') &&
-        cells[11].classList.contains('_active') &&
-        cells[12].classList.contains('_active') &&
-        cells[13].classList.contains('_active') &&
-        cells[14].classList.contains('_active') &&
-        cells[16].classList.contains('_active') &&
-        cells[17].classList.contains('_active') &&
-        cells[18].classList.contains('_active') &&
-        cells[22].classList.contains('_active') &&
-        !cells[0].classList.contains('_active') &&
-        !cells[2].classList.contains('_active') &&
-        !cells[4].classList.contains('_active') &&
-        !cells[15].classList.contains('_active') &&
-        !cells[19].classList.contains('_active') &&
-        !cells[20].classList.contains('_active') &&
-        !cells[21].classList.contains('_active') &&
-        !cells[23].classList.contains('_active') &&
-        !cells[24].classList.contains('_active')) {
-
-        showGameOver();
-    }
-}
-
-function checkCells2() {
-    if (!cells[1].classList.contains('_active') &&
-        // !cells[3].classList.contains('_active') &&
-        // !cells[5].classList.contains('_active') &&
-        // cells[6].classList.contains('_active') &&
-        // !cells[7].classList.contains('_active') &
-        // cells[8].classList.contains('_active') &&
-        // !cells[9].classList.contains('_active') &&
-        // !cells[10].classList.contains('_active') &&
-        // !cells[11].classList.contains('_active') &&
-        // cells[12].classList.contains('_active') &&
-        // !cells[13].classList.contains('_active') &&
-        // !cells[14].classList.contains('_active') &&
-        // cells[16].classList.contains('_active') &&
-        // !cells[17].classList.contains('_active') &&
-        // cells[18].classList.contains('_active') &&
-        // !cells[22].classList.contains('_active') &&
-        // cells[0].classList.contains('_active') &&
-        // !cells[2].classList.contains('_active') &&
-        // cells[4].classList.contains('_active') &&
-        // !cells[15].classList.contains('_active') &&
-        // !cells[19].classList.contains('_active') &&
-        // cells[20].classList.contains('_active') &&
-        // !cells[21].classList.contains('_active') &&
-        // !cells[23].classList.contains('_active') &&
-        cells[24].classList.contains('_active')) {
-
-        showGameOver();
-    }
+                    showGameOver();
+                }
+            }
+        });
+    });
 }
 
 function showGameOver() {
@@ -535,7 +594,6 @@ function showGameOver() {
     }, 1000);
     popupSubtitle.innerHTML = `Great! You have solved the nonogram in ${time} seconds!`;
     document.body.classList.add('_lock');
-    // addTableRow();
 }
 
 // button Levels 
@@ -547,6 +605,7 @@ buttonLevels.addEventListener('click', () => {
 
 popupLevelListItems.forEach(level => {
     level.addEventListener("click", () => {
+        resetGame();
         if (level.innerHTML === '5x5') {
             popupLevel5x5.classList.add('_active');
         }
@@ -559,9 +618,9 @@ popupLevelListItems.forEach(level => {
 // button Results
 
 buttonResults.addEventListener('click', () => {
+    // pauseTimer();
     popupTableResults.classList.toggle('_active');
     document.body.classList.add('_lock');
-    // addTableRow();
 });
 
 popupTableResults.addEventListener('click', (event) => {
@@ -649,6 +708,7 @@ function resetGame() {
     timeTimer.textContent = "00 : 00";
     seconds = 0;
     // minutes = 0;
+    gameContentShadow.classList.add('game-content-shadow');
 }
 
 // button Random Game
@@ -656,7 +716,8 @@ function resetGame() {
 buttonRandomGame.addEventListener('click', () => {
     resetGame();
     pauseTimer();
-    startTimer();
+    gameContentShadow.classList.add('game-content-shadow');
+    // startTimer();
 });
 
 // button Save Game
@@ -693,12 +754,14 @@ buttonSaveGame.addEventListener("click", () => {
 buttonResetGame.addEventListener('click', () => {
     resetGame();
     pauseTimer();
-    startTimer();
+    gameContentShadow.classList.add('game-content-shadow');
+    // startTimer();
 });
 
 // button Solution
 
 buttonSolution.addEventListener('click', () => {
+    pauseTimer();
     cells.forEach(cell => {
         cell.classList.remove('_crossed-cell');
         if (cell.innerHTML === 'x') {
@@ -716,7 +779,8 @@ buttonPlayAgain.addEventListener('click', () => {
     document.body.classList.remove('_lock');
     resetGame();
     pauseTimer();
-    startTimer();
+    gameContentShadow.classList.add('game-content-shadow');
+    // startTimer();
 });
 
 // popup Rules 
