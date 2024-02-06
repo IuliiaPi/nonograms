@@ -239,7 +239,7 @@ html,
 .left-clues {
     display: flex;
     flex-direction: row-reverse;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
@@ -256,7 +256,7 @@ html,
     height: 50px;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     border: 1px solid rgb(208, 208, 208);
     border-radius: 2px;
@@ -315,11 +315,10 @@ html,
 
 .popup {
     display: none;
-    width: 100%;
-    /* height: 100%; */
+    width: 100vw;
     height: 100vh;
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    top: 0;
     left: 0;
     background-color: #8c8d90e3;
 }
@@ -450,7 +449,7 @@ html,
     justify-content: center;
     align-items: center; */
     /* gap: 45px; */
-    border: 2px solid; 
+    border: 2px solid;
     border-radius: 5px;
 
     font-size: 20px;
@@ -459,12 +458,12 @@ html,
 .table__title {
     /* height: 40px; */
     padding: 10px 35px;
-    border: 2px solid; 
+    border: 2px solid;
 }
 
 .table__subtitle {
     height: 30px;
-    border: 1px solid; 
+    border: 1px solid;
     text-align: center;
 }
 
@@ -518,22 +517,22 @@ html,
         width: 40px;
         height: 40px;
     }
-    
+
     .left-clues__cells {
         width: 40px;
         height: 40px;
     }
-    
+
     .game-content {
         width: 202px;
         height: 202px;
     }
-    
+
     .game-content-shadow {
         width: 202px;
         height: 202px;
     }
-    
+
     .game-cell {
         width: 40px;
         height: 40px;
