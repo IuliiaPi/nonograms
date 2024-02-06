@@ -472,32 +472,33 @@ popupContent.append(buttonPlayAgain);
 
 function clickCell() {
     cells.forEach(cell => {
-        cell.addEventListener('click', (event) => {
+        cell.addEventListener('click', handleLeftClick);
+        // Assign an 'contextmenu' event to cell:
+        cell.addEventListener('contextmenu', handleRightClick);
+
+        function handleLeftClick(event) {
             if (event.button === 0) {
                 cell.classList.toggle('_active');
                 cell.innerHTML = '';
-                audio = new Audio('./assets/audio/bell.wav');
-                playSound();
+
+                const audioLeftClick = new Audio();
+                audioLeftClick.src = './assets/audio/bell.wav';
+                audioLeftClick.volume = volume;
+                audioLeftClick.play();
             }
-        });
+        }
 
-        // Prevent the context menu to show:
-
-        // Assign an 'contextmenu' event to cell:
-        cell.addEventListener('contextmenu', showCrossedCell);
-
-        // Prevent default context menu:
-        cell.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-        });
-
-        // Show cell content:
-        function showCrossedCell() {
+        function handleRightClick(event) {
+            // Prevent default context menu:
+            event.preventDefault();
             cell.classList.remove('_active');
             cell.classList.remove('_crossed-cell');
             cell.innerHTML = 'x';
-            audio = new Audio('./assets/audio/lose.wav');
-            playSound();
+
+            const audioRightClick = new Audio();
+            audioRightClick.src = './assets/audio/lose.wav';
+            audioRightClick.volume = volume;
+            audioRightClick.play();
         }
     });
 }
@@ -586,8 +587,11 @@ function checkCellsX() {
 }
 
 function showGameOver() {
-    audio = new Audio('./assets/audio/win-sound.wav');
-    playSound();
+    const audioWin = new Audio();
+    audioWin.src = './assets/audio/win-sound.wav';
+    audioWin.volume = volume;
+    audioWin.play();
+
     pauseTimer();
     setTimeout(() => {
         popup.classList.add('_active');
@@ -657,20 +661,14 @@ buttonBackground.addEventListener("click", () => {
 // button Volume 
 
 buttonSound.addEventListener("click", () => {
-    if (volume === 0.1) {
+    if (volume === 0.2) {
         volume = 0;
         buttonSound.textContent = "Unmute";
     } else {
-        volume = 0.1;
+        volume = 0.2;
         buttonSound.textContent = "Mute";
     }
 });
-
-function playSound() {
-    // audio = new Audio('./assets/audio/bell.wav');
-    audio.volume = volume;
-    audio.play();
-}
 
 // Timer  
 
@@ -762,8 +760,10 @@ buttonResetGame.addEventListener('click', () => {
 
 buttonSolution.addEventListener('click', () => {
     pauseTimer();
+    resetGame();
+
     cells.forEach(cell => {
-        cell.classList.remove('_crossed-cell');
+        // cell.classList.remove('_crossed-cell');
         if (cell.innerHTML === 'x') {
             cell.classList.remove('_active');
         } else {
